@@ -213,8 +213,8 @@
     const ctx = (id) => $(id).getContext("2d");
 
     // Colores y grosor
-    const rojo = "#ff0000";
-    const azul = "#0066ff";
+    const rojo = "#ff002bff";
+    const azul = "#ff0000ff";
 
     const baseOpt = {
       responsive: true,
@@ -223,21 +223,21 @@
       plugins: { legend: { labels: { color: "#fff" } } }
     };
 
-    // NIVEL → rojo
+    // NIVEL → azul
     state.charts.nivel = new Chart(ctx("#chartNivel"), {
       type: "line",
       data: { labels: [], datasets: [{ label: "Nivel (cm)", data: [], tension: 0.3 }] },
-      options: { ...baseOpt, scales: { x: { ticks: { color: rojo }, grid: { color: "rgba(255,0,0,0.15)" } }, y: { ticks: { color: rojo }, grid: { color: "rgba(255,0,0,0.15)" } } } },
+      options: { ...baseOpt, scales: { x: { ticks: { color: azul }, grid: { color: "rgba(17, 0, 255, 1)" } }, y: { ticks: { color: azul }, grid: { color: "rgba(38, 0, 255, 1)" } } } },
       plugins: [{
         beforeDraw: (chart) => { chart.data.datasets[0].borderColor = rojo; chart.data.datasets[0].backgroundColor = "transparent"; }
       }]
     });
 
-    // TEMP → azul
+    // TEMP → rojo
     state.charts.temp = new Chart(ctx("#chartTemp"), {
       type: "line",
       data: { labels: [], datasets: [{ label: "Temp (°C)", data: [], tension: 0.3 }] },
-      options: { ...baseOpt, scales: { x: { ticks: { color: azul }, grid: { color: "rgba(0,102,255,0.15)" } }, y: { ticks: { color: azul }, grid: { color: "rgba(0,102,255,0.15)" } } } },
+      options: { ...baseOpt, scales: { x: { ticks: { color: azul }, grid: { color: "rgba(17, 0, 255, 1)" } }, y: { ticks: { color: azul }, grid: { color: "rgba(38, 0, 255, 1)" } } } },
       plugins: [{
         beforeDraw: (chart) => { chart.data.datasets[0].borderColor = azul; chart.data.datasets[0].backgroundColor = "transparent"; }
       }]
@@ -247,7 +247,7 @@
     state.charts.hum = new Chart(ctx("#chartHum"), {
       type: "line",
       data: { labels: [], datasets: [{ label: "Humedad (%RH)", data: [], tension: 0.3 }] },
-      options: { ...baseOpt, scales: { x: { ticks: { color: rojo }, grid: { color: "rgba(255,0,0,0.15)" } }, y: { ticks: { color: rojo }, grid: { color: "rgba(255,0,0,0.15)" } } } },
+      options: { ...baseOpt, scales: { x: { ticks: { color: azul }, grid: { color: "rgba(17, 0, 255, 1)" } }, y: { ticks: { color: azul }, grid: { color: "rgba(38, 0, 255, 1)" } } } },
       plugins: [{
         beforeDraw: (chart) => { chart.data.datasets[0].borderColor = rojo; chart.data.datasets[0].backgroundColor = "transparent"; }
       }]
