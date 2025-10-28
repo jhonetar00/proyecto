@@ -1,0 +1,19 @@
+{
+  "name": "tech-server-dashboard",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --fix",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "vite": "^5.2.11",
+    "eslint": "^9.3.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5"
+  },
+  "browserslist": [ "> 0.5%", "last 2 versions", "not dead" ]
+}

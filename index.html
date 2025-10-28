@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es" data-bs-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Technology Server – Dashboard profesional" />
+
+  <!-- Favicon / Apple-touch con rutas relativas -->
+  <link rel="icon" href="menu4.png" />
+  <link rel="apple-touch-icon" href="menu4.png" />
+
+  <title>Technology Server | Dashboard</title>
+
+  <!-- Bootstrap 5.3 -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <!-- Material Icons -->
+  <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1e1e2f" />
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+  <!-- FONDO NEGRO LIMPIO -->
+  <div id="bg-black"></div>
+
+  <!-- LOGIN: logo enorme y centrado -->
+  <section id="login-container" class="d-flex flex-column justify-content-center align-items-center min-vh-100">
+    <!-- Logo principal gigante -->
+    <img src="menu4.png" class="login-logo-center mb-3" alt="Logo Technology Server" />
+
+    <h1 class="h5 mb-0 text-white">Technology Server</h1>
+    <p class="text-white-50 small mb-4">Dashboard profesional</p>
+
+    <!-- Formulario -->
+    <form id="login-form" novalidate class="bg-glass p-4 rounded-4 shadow-lg">
+      <div class="mb-3">
+        <label for="username" class="form-label text-white">Usuario</label>
+        <input type="text" id="username" class="form-control" required autocomplete="username" maxlength="20" />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label text-white">Contraseña</label>
+        <input type="password" id="password" class="form-control" required autocomplete="current-password" maxlength="20" />
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+      <p id="login-error" class="text-danger mt-2 d-none text-center">Credenciales incorrectas</p>
+    </form>
+  </section>
+
+  <!-- DASHBOARD: fondo menu4.png con overlay oscuro -->
+  <div id="dashboard-container" class="d-flex flex-grow-1 d-none">
+    <!-- Fondo de imagen con overlay -->
+    <div id="dashboard-bg"></div>
+
+    <nav id="sidebar" class="sidebar d-flex flex-column p-3">
+      <header class="text-center mb-3">
+        <img src="qualico.jpg" class="rounded-circle mb-2 logo-small" alt="Logo" width="50" height="50" />
+        <h2 class="h6 text-white mb-0">TECHNOLOGY SERVER</h2>
+        <p class="small text-muted mb-0" id="sidebar-username"></p>
+      </header>
+      <ul id="menu" class="nav flex-column flex-grow-1" role="tablist"></ul>
+      <div class="p-2 mb-2 border-top border-secondary">
+        <div class="form-check form-switch m-0 text-white">
+          <input class="form-check-input" type="checkbox" id="darkModeSwitch" aria-label="Modo oscuro">
+          <label class="form-check-label" for="darkModeSwitch">🌙 Oscuro</label>
+        </div>
+      </div>
+      <footer class="mt-auto d-grid gap-2">
+        <button id="logout-btn" class="btn btn-sm btn-warning">Cerrar sesión</button>
+        <button id="sidebarToggle" class="btn btn-sm btn-info" aria-label="Contraer/expandir menú">☰</button>
+      </footer>
+    </nav>
+
+    <main id="main-content" class="flex-grow-1 p-3">
+      <header class="topbar d-flex justify-content-between align-items-center mb-3 p-3 rounded shadow-sm">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item active" id="breadcrumb">Inicio</li>
+          </ol>
+        </nav>
+      </header>
+      <section id="view-root" aria-live="polite"></section>
+    </main>
+  </div>
+
+  <!-- Modal TXT -->
+  <div class="modal fade" id="txtFileModal" tabindex="-1" aria-labelledby="txtFileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <form class="modal-content">
+        <header class="modal-header">
+          <h5 class="modal-title" id="txtFileModalLabel">Editor de archivo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </header>
+        <main class="modal-body">
+          <label for="txtFileContent" class="visually-hidden">Contenido del archivo</label>
+          <textarea id="txtFileContent" class="form-control" rows="15" required></textarea>
+        </main>
+        <footer class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary" id="txtFileSave">Guardar</button>
+        </footer>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+  <script type="module" src="app.js"></script>
+
+  <!-- PWA Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>
