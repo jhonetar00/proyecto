@@ -30,7 +30,7 @@ body {
   pointer-events: none;
 }
 
-/* ---------- FONDO NEGRO LIMPIO (login) ---------- */
+/* ---------- LOGIN – fondo negro limpio ---------- */
 #login-container {
   min-height: 100vh;
   background: #000;
@@ -40,13 +40,13 @@ body {
   align-items: center;
 }
 
-/* ---------- FONDO menu5.png + OVERLAY OSCURO (dashboard) ---------- */
+/* ---------- DASHBOARD – fondo imagen + overlay más oscuro ---------- */
 #dashboard-bg {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
-  background-image: url(menu5.png); /* <-- relativa */
+  background-image: url(menu5.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -57,7 +57,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55); /* overlay oscuro */
+  background: rgba(0, 0, 0, 0.75); /* <-- más oscuro para que el texto resalte */
   z-index: -2;
 }
 
@@ -76,7 +76,7 @@ body {
   100% { transform: scale(1);   box-shadow: 0 0 20px rgba(0, 212, 255, 0.55); }
 }
 
-/* Cristal semi-transparente para el formulario */
+/* ---------- Cristal para formularios ---------- */
 .bg-glass {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(6px);
@@ -135,15 +135,104 @@ body {
   margin-left: var(--sidebar-collapsed-w);
 }
 
+/* ---------- TOPBAR – texto blanco para que resalte ---------- */
 .topbar {
-  background: #fff;
-  border-bottom: 1px solid #dee2e6;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
 }
-[data-bs-theme="dark"] .topbar {
-  background: #1a1a1a;
-  border-color: #333;
+.topbar .breadcrumb-item,
+.topbar .breadcrumb-item.active,
+.topbar .breadcrumb-item::before {
+  color: #fff !important;
 }
 
+/* ---------- Tablas y textos dentro del dashboard ---------- */
+.table,
+.table-striped,
+.table-responsive,
+#view-root,
+#view-root h2,
+#view-root h3,
+#view-root h4,
+#view-root p,
+#view-root label,
+#view-root .text-muted {
+  color: #fff !important;
+}
+
+/* ---------- Tabla – bordes y fondos suaves ---------- */
+.table-striped > tbody > tr:nth-of-type(odd) > td {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.table-striped > tbody > tr:nth-of-type(even) > td {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+.table > thead {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+.table-bordered,
+.table-striped {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ---------- Inputs dentro del dashboard ---------- */
+#view-root input.form-control,
+#view-root textarea.form-control,
+#view-root select.form-select {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+#view-root input.form-control:focus,
+#view-root textarea.form-control:focus,
+#view-root select.form-select:focus {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: #00d4ff;
+  color: #fff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 212, 255, 0.25);
+}
+
+/* ---------- Botones dentro del dashboard ---------- */
+#view-root .btn {
+  border-radius: 6px;
+}
+#view-root .btn-primary {
+  background-color: #00d4ff;
+  border-color: #00d4ff;
+  color: #000;
+  font-weight: 600;
+}
+#view-root .btn-primary:hover {
+  background-color: #00b8e6;
+  border-color: #00b8e6;
+}
+#view-root .btn-secondary {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+#view-root .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ---------- Dark-mode switch (siempre visible y funcional) ---------- */
+.sidebar .form-check-input {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.sidebar .form-check-input:checked {
+  background-color: #00d4ff;
+  border-color: #00d4ff;
+}
+.sidebar .form-check-label {
+  color: #fff;
+  user-select: none;
+}
+
+/* ---------- Tablas responsivas ---------- */
 .table-responsive {
   font-size: 0.875rem;
 }
@@ -154,6 +243,7 @@ body {
   border-radius: 4px;
 }
 
+/* ---------- Responsive ---------- */
 @media (max-width: 768px) {
   .sidebar {
     width: var(--sidebar-collapsed-w);
